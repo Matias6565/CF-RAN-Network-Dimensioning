@@ -33,8 +33,8 @@ act_lambda = 0
 
 fog_delay = 0.0000980654 # 10km
 cloud_delay = 0.000049033 # 10km 0,000033356
-ONU_delay = 0.0000016 # 1,6 µs
-LC_delay = 0.0000015 # 1,5 µs 0.000069283
+ONU_Activation_delay = 0.0000016 # 1,6 µs
+LC_Activation_delay = 0.0000015 # 1,5 µs 0.000069283
 
 # Taxa CPRI 
 Band = 1000000 #Very big Num
