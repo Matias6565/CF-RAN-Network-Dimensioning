@@ -89,32 +89,6 @@ class Traffic_Generator(object):
 			next_time = actual_stamp + change_time
 			traffics.append(total_period_requests)
 			arrival_rate = loads.pop()/change_time
-			if total_period_requests >0:
-				total_wait = 0
-				queue_size = 0
-				mu = 1.0/service_rate
-				l = 1.0/arrival_rate
-				rho = l/mu
-				W = rho/mu/(1-rho)  # average weight in the queue
-				T = 1/mu/(1-rho)    # average total system time.
-				nq_bar = rho/(1.0 - rho) - rho # The average number waiting in the queue
-				if W and T and nq_bar >0:
-					print (" Avg. Espera na Fila: {:.15f}\n Avg. Tempo total: {:.15f}\n Avg Tamanho da Fila {:.15f}\n".format(W, T, nq_bar))
-				else:
-					print ("Avg. Espera na Fila: 0 \n Avg. Tempo total: 0 \n Avg Tamanho da Fila 0\n")
-				#print ('Sim Average queue wait = {}'.format(queue_wait/total_period_requests))
-				#print ('Sim Average total wait = {}'.format(total_wait/total_period_requests))
-				#print ('Sim Average queue size = {}'.format(queue_size/float(total_period_requests)))
-				#print ("Theory: avg queue wait {:.10f}, avg total time {:.10f}, avg queue size {:.10f}".format(W, T, nq_bar))
-				#print ('Avg. Espera na Fila = {}'.format(queue_wait/total_period_requests))
-				#print ('Avg. Espera Total = {}'.format(total_wait/total_period_requests))
-				#print ('Avg. Tam. Fila = {}'.format(queue_size/float(total_period_requests)))
-
-				#service_rate = random.expovariate(1 / total_period_requests)
-				#print(1/(service_rate - (1-(arrival_rate/service_rate))))# veja isso direito depois
-			else:
-				print("0")
-			#print(service_time + arrival_rate)
 			self.action = self.env.process(self.run())
 			print("Arrival rate now is {} at {} and was generated {}".format(arrival_rate, self.env.now/3600, total_period_requests))
 			total_requested.append(total_period_requests)
